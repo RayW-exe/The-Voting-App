@@ -7,6 +7,7 @@ function pollOption({ option , totalVotes, vote, disabled}){
     return(
         <div>
             <h3>{option.text}</h3>
+            <p>{option.votes} votes ({percentage}%)</p>
     
         </div>
     )
