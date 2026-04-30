@@ -3,4 +3,11 @@ function pollOption({ option , totalVotes, vote, disabled}){
     const percentage = totalVotes
     ? ((option.votes / totalVotes) * 100 ).toFixed(1)
     :0;
+
+    return(
+        <div>
+            <h3>{option.text}</h3>
+    
+        </div>
+    )
 }
