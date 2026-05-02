@@ -1,5 +1,6 @@
 import PollOption from "./PollOption";
-import "../App.css";
+
+
 function PollList({ polls, onVote, isOptionDisabled }) {
   return (
     <div>
