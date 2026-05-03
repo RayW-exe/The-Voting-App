@@ -1,18 +1,76 @@
-# React + Vite
+# The Voting App
+"Where every vote counts"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<em>Built with the tools and technologies:</em>
 
-Currently, two official plugins are available:
+<img src="https://img.shields.io/badge/React-F7DF1E.svg?style=flat&logo=React&logoColor=black" alt="React">
+<img src="https://img.shields.io/badge/HTML-000000.svg?style=flat&logo=HTML&logoColor=white" alt="HTML">
+<img src="https://img.shields.io/badge/CSS-0080ff.svg?style=flat&logo=TailwindCSS&logoColor=black" alt="TailwindCSS">
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## Table of Contents
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Usage](#usage)
+- [Features](#features)
+- [Contributing](#contributing)
 
-Note: This will impact Vite dev & build performances.
+## Overview
+The Voting App is a web application created by five software engineering students in Kenya, that allows users to create polls, cast votes and view results all in a fast,secure and user-friendly way.
+### Core Purpose
+ - The app is designed to collect opinions from users
+ - Ensure each user votes fairly(only one vote each)
+ - Display results clearly
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+This project requires the following:
+- **HTML**
+- **React Js** 
+- **Tailwind Css** 
+
+### Installation
+
+Get "The Voting App" from the source and install dependencies:
+
+1. **Fork the repository**
+
+2. **Clone the repository:**
+
+    ```sh
+    ❯ git clone https://github.com/RayW-exe/The-Voting-App
+    ```
+    
+3. **Navigate to the project directory:**
+
+    ```sh
+    ❯ cd The-Voting-App
+    ```
+4. **Install the dependencies:**
+
+    echo 'npm install'
+
+### Usage
+
+Run the project with:
+    'npm run dev'
+
+## Features
+
+1. **Create a Poll**
+2. **Vote**
+3. **Display Results**
+4. **Show available polls**
+
+## Contributing
+- Ray Wekesa
+- Keshawn Kingori
+- Gladwell Birika
+- Erika Gwiyo
+- Newton Mwangi
+
