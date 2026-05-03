@@ -5,12 +5,11 @@ import PollList from './components/Pollist';
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
       <div className="bg-gray-300 min-h-screen p-4 items-center flex flex-col">
-        <div className="w-4xl bg-white p-6 rounded-lg shadow-lg md:w-3/4">
+        <div className="max-w-4xl bg-white p-6 rounded-lg shadow-lg md:w-3/4">
            <div className="mb-8 bg-sky-500 p-4 rounded-lg shadow-lg text-white">
              <h1 className="text-3xl font-bold mb-4">The Voting App</h1>
            </div>
