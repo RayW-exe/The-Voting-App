@@ -20,6 +20,9 @@ function App() {
            <div className="bg-sky-100 p-4 rounded-lg shadow-lg">
               <PollList polls={[]} onVote={() => {}} isOptionDisabled={() => false} />
               <PollOption option={{id: 1, text: 'Option 1', votes: 0}} totalVotes={0} vote={() => {}} disabled={false} />
+              <button onClick={() => setCount(0)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                Reset
+              </button>
            </div>
         </div>
       </div>
