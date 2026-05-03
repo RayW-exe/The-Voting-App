@@ -1,10 +1,18 @@
 import { useState } from 'react';
 import PollForm from './components/PollForm';
-import PollOption from './components/PollOption';
-import PollList from './components/Pollist';
+import PollList from './components/PollList';
 
 
 function App() {
+ 
+ const [polls, setPolls] = useState(() => {
+  const stored = localStorage.getItem("polls");
+  return stored ? JSON.parse(stored) : [];
+});
+
+ function storePollOptions(newPoll){
+  localStorage.setItem("polls", JSON.stringify(newPoll));
+  }
 
   return (
     <>
@@ -14,12 +22,28 @@ function App() {
              <h1 className="text-3xl font-bold mb-4">The Voting App</h1>
            </div>
            <div className="mb-8 bg-sky-100 p-4 rounded-lg shadow-lg">
-              <PollForm addOption={() => {}} />
+              <PollForm addOption={(text) => {
+                const newPoll = [...polls, { id: Date.now(), text, votes: 0 }];
+                setPolls(newPoll);
+                storePollOptions(newPoll);
+              }} />
            </div>
            <div className="bg-sky-100 p-4 rounded-lg shadow-lg">
-              <PollList polls={[]} onVote={() => {}} isOptionDisabled={() => false} />
-              <PollOption option={{id: 1, text: 'Option 1', votes: 0}} totalVotes={0} vote={() => {}} disabled={false} />
-              <button onClick={() => setCount(0)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              <PollList polls={polls} onVote={(pollId) => {
+                const updatedPolls = polls.map(poll => {
+                  if (poll.id === pollId) {
+                    return { ...poll, votes: poll.votes + 1 };
+                  }
+                  return poll;
+                });
+                setPolls(updatedPolls);
+                storePollOptions(updatedPolls);
+              }} isOptionDisabled={() => false} />
+              <button onClick={() => {
+                setPolls([]);
+                localStorage.removeItem("polls");
+              }}
+               className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                 Reset
               </button>
            </div>

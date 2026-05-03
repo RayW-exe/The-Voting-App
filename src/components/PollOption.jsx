@@ -1,6 +1,3 @@
-import React from 'react';
-
-
 function PollOption({ option , totalVotes, vote, disabled}){
   
     const percentage = totalVotes
