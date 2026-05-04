@@ -7,7 +7,10 @@ function App() {
  
  const [polls, setPolls] = useState(() => {
   const stored = localStorage.getItem("polls");
-  return stored ? JSON.parse(stored) : [];
+  return stored ? JSON.parse(stored) : [
+    {id: 1, text: "Option 1", votes: 0},
+    {id: 2, text: "Option 2", votes: 0},
+  ];
 });
 
  function storePollOptions(newPoll){
@@ -23,9 +26,9 @@ function App() {
            </div>
            <div className="mb-8 bg-sky-100 p-4 rounded-lg shadow-lg">
               <PollForm addOption={(text) => {
-                const newPoll = [...polls, { id: Date.now(), text, votes: 0 }];
-                setPolls(newPoll);
-                storePollOptions(newPoll);
+                const newPolls = [...polls, { id: Date.now(), text, votes: 0 }];
+                setPolls(newPolls);
+                storePollOptions(newPolls);
               }} />
            </div>
            <div className="bg-sky-100 p-4 rounded-lg shadow-lg">
