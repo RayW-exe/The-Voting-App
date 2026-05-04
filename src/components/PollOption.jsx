@@ -8,13 +8,20 @@ function PollOption({ option , totalVotes, vote, disabled}){
         <div>
             <h3>{option.text}</h3>
             <p>{option.votes} votes ({percentage}%)</p>
+            <div className="w-full bg-gray-300 rounded h-4 mt-2">
+         <div
+             className="bg-green-500 h-4 rounded p-2"
+   
+             style={{ width: `${percentage}%` }}
+  ></div>
+</div>
     
      <button onClick={vote} disabled={disabled} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
         vote
        </button>
         </div>
 
-      
+       
     );
 
 }
