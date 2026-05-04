@@ -9,7 +9,7 @@ function PollOption({ option , totalVotes, vote, disabled}){
             <h3>{option.text}</h3>
             <p>{option.votes} votes ({percentage}%)</p>
     
-     <button onClick={() => vote(option.id)} disabled={disabled} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+     <button onClick={vote} disabled={disabled} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
         vote
        </button>
         </div>
