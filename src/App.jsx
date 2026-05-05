@@ -6,9 +6,9 @@ import LoginSignUpPage from "./Pages/Login-SignUp-page"
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<VotingPage />} />
+      <Route path="/voting" element={<VotingPage />} />
       <Route path="/about" element={<AboutPage />} />
-      <Route path="/login-signup" element={<LoginSignUpPage />} />
+      <Route path="*" element={<LoginSignUpPage />} />
     </Routes>
   );
 }
