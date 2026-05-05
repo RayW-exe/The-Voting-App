@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PollForm from './components/PollForm';
 import PollList from './components/PollList';
+import Login from './Pages/Login';
 
 function App() {
   const initialData = [
@@ -54,6 +55,8 @@ function App() {
 
         </div>
       </div>
+
+      <Login />
     </>
   )
 }

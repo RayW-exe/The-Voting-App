@@ -1,6 +1,25 @@
 import React from "react";
+import { signInWithEmailAndPassword,signInWithPopup,GoogleAuthProvider,createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { app } from "firebase";
+import { useState } from "react";
+
 
 function Login() {
+    const [email,setEmail] = useState("")
+    const [password,setPassword] = useState("")
+    const [loginError,setLoginError] = useState("")
+
+    const auth = getAuth(app);
+    
+    const handleSignUp = async (e) => {
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            console.log("User signed up successfully");
+        } catch (error) {
+            console.log("Error signing up:", error);
+        }
+    }
+
     const [form,setForm] = useState({
             email:"",
             password:"",
@@ -66,6 +85,10 @@ function Login() {
                 <button type="submit">Login</button>
                  {success && <p className="text-green-600 text-center mt-4 font-medium">{success}</p>}
             </form>
+            <button>Sign Up</button>
+            <button onClick={() => signInWithPopup(auth, new GoogleAuthProvider())}>
+                Sign in with Google
+            </button>
         </>
         
         
