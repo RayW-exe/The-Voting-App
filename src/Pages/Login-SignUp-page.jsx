@@ -69,7 +69,7 @@ function LoginSignUpPage() {
                     <div className="items-center justify-center">
                         <button onClick={handleSignUp} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-200">Sign Up</button><br />
                         <button onClick={() => signInWithPopup(auth, new GoogleAuthProvider())} className="w-full flex items-center justify-center gap-2 border border-gray-300 hover:bg-gray-50 py-2 rounded-lg transition">
-                            <img src="https://www.svgrepo.com/show/355037/google.svg" class="w-5 h-5" alt="Google" />
+                            <img src="https://www.svgrepo.com/show/355037/google.svg" className="w-5 h-5" alt="Google" />
                             Sign in with Google
                         </button>
                     </div>
