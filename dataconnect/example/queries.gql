@@ -1,0 +1,49 @@
+query AllPolls @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  polls {
+    id
+    question
+    description
+    createdAt
+    endsAt
+    creator {
+      username
+    }
+    options_on_poll {
+      id
+      text
+    }
+  }
+}
+
+mutation CreateNewPoll($question: String!, $description: String, $endsAt: Timestamp) @auth(level: USER) {
+  poll_insert(data: {
+    question: $question,
+    description: $description,
+    endsAt: $endsAt,
+    creatorId_expr: "auth.uid",
+    createdAt_expr: "request.time"
+  }) {
+    id
+  }
+}
+
+mutation AddOptionToPoll($pollId: UUID!, $text: String!) @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users. The pollId is provided by the client.") {
+  option_insert(data: {
+    pollId: $pollId,
+    text: $text
+  }) {
+    id
+  }
+}
+
+query UserVotes @auth(level: USER) {
+  votes(where: {userId: {eq_expr: "auth.uid"}}) {
+    poll {
+      question
+    }
+    option {
+      text
+    }
+    votedAt
+  }
+}

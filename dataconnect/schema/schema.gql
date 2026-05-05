@@ -1,0 +1,26 @@
+type User @table {
+  username: String!
+  passwordHash: String!
+  createdAt: Timestamp!
+  email: String
+}
+
+type Poll @table {
+  question: String!
+  createdAt: Timestamp!
+  creator: User!
+  description: String
+  endsAt: Timestamp
+}
+
+type Option @table {
+  text: String!
+  poll: Poll!
+}
+
+type Vote @table(key: ["user", "option", "poll"]) {
+  user: User!
+  option: Option!
+  poll: Poll!
+  votedAt: Timestamp!
+}

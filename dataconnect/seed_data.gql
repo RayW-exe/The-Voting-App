@@ -1,0 +1,58 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "This operation is for seeding demo data and can be run by any authenticated user.") {
+  user1: user_insert(data: {
+    id: "2a0a2a0a-2a0a-2a0a-2a0a-2a0a2a0a2a0a",
+    username: "alice",
+    passwordHash: "hashedpassword1",
+    createdAt: "2024-01-01T00:00:00Z",
+    email: "alice@example.com"
+  })
+  user2: user_insert(data: {
+    id: "3b1b3b1b-3b1b-3b1b-3b1b-3b1b3b1b3b1b",
+    username: "bob",
+    passwordHash: "hashedpassword2",
+    createdAt: "2024-01-02T00:00:00Z",
+    email: "bob@example.com"
+  })
+  poll1: poll_insert(data: {
+    id: "4c2c4c2c-4c2c-4c2c-4c2c-4c2c4c2c4c2c",
+    question: "What is your favorite color?",
+    description: "Choose your preferred color.",
+    createdAt: "2024-01-03T10:00:00Z",
+    endsAt: "2024-01-10T23:59:59Z",
+    creatorId: "2a0a2a0a-2a0a-2a0a-2a0a-2a0a2a0a2a0a"
+  })
+  poll2: poll_insert(data: {
+    id: "5d3d5d3d-5d3d-5d3d-5d3d-5d3d5d3d5d3d",
+    question: "Which season do you like most?",
+    description: "Tell us your favorite season.",
+    createdAt: "2024-01-04T12:00:00Z",
+    creatorId: "3b1b3b1b-3b1b-3b1b-3b1b-3b1b3b1b3b1b"
+  })
+  option1: option_insert(data: {
+    id: "6e4e6e4e-6e4e-6e4e-6e4e-6e4e6e4e6e4e",
+    text: "Blue",
+    pollId: "4c2c4c2c-4c2c-4c2c-4c2c-4c2c4c2c4c2c"
+  })
+  option2: option_insert(data: {
+    id: "7f5f7f5f-7f5f-7f5f-7f5f-7f5f7f5f7f5f",
+    text: "Green",
+    pollId: "4c2c4c2c-4c2c-4c2c-4c2c-4c2c4c2c4c2c"
+  })
+  option3: option_insert(data: {
+    id: "8a6a8a6a-8a6a-8a6a-8a6a-8a6a8a6a8a6a",
+    text: "Summer",
+    pollId: "5d3d5d3d-5d3d-5d3d-5d3d-5d3d5d3d5d3d"
+  })
+  vote1: vote_insert(data: {
+    userId: "2a0a2a0a-2a0a-2a0a-2a0a-2a0a2a0a2a0a",
+    optionId: "6e4e6e4e-6e4e-6e4e-6e4e-6e4e6e4e6e4e",
+    pollId: "4c2c4c2c-4c2c-4c2c-4c2c-4c2c4c2c4c2c",
+    votedAt: "2024-01-03T11:00:00Z"
+  })
+  vote2: vote_insert(data: {
+    userId: "3b1b3b1b-3b1b-3b1b-3b1b-3b1b3b1b3b1b",
+    optionId: "7f5f7f5f-7f5f-7f5f-7f5f-7f5f7f5f7f5f",
+    pollId: "4c2c4c2c-4c2c-4c2c-4c2c-4c2c4c2c4c2c",
+    votedAt: "2024-01-04T13:00:00Z"
+  })
+}
