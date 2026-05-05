@@ -1,61 +1,34 @@
-import React from "react";
-import { signInWithEmailAndPassword,signInWithPopup,GoogleAuthProvider,createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { app } from "firebase";
+import { app } from "../firebase";
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { initializeApp } from "firebase/app";
 import { useState } from "react";
 
 
 function Login() {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
-    const [loginError,setLoginError] = useState("")
+    const [errors,setErrors] = useState({})
+    const [success,setSuccess] = useState("")
 
     const auth = getAuth(app);
     
-    const handleSignUp = async (e) => {
+    const handleSignUp = async () => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            console.log("User signed up successfully");
-        } catch (error) {
-            console.log("Error signing up:", error);
+            setSuccess("User signed up successfully");
+            setErrors({});
+        } catch {
+            setErrors({ form: "Error signing up. Please try again." });
+            setSuccess("");
         }
     }
 
-    const [form,setForm] = useState({
-            email:"",
-            password:"",
-        })
-        const [errors,setErrors] = useState({})
-        const [success,setSuccess] = useState({})
-        const handleChange = (e)=>{
-            setForm({
-                ...form,
-                [e.target.name]: e.target.value
-            })
-        }
-        const handleSubmit =(e)=>{
-            e.preventDefault()
-            let messages = ""
-            let validEmail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setSuccess("Login submitted")
+        setErrors({})
+    }
 
-            if(!form.email){
-                messages.email = "Email is required"
-            }else if(!validEmail.test(form.email)){
-                messages.email = "Enter a valid email"
-            }
-            if(!form.password){
-                messages.password = "password is required"
-            }else if(form.password.length < 6){
-                messages.password = "Password should have at least 6 characters"
-            }
-            
-            if(Object.keys(messages).length > 0){
-                setErrors(messages)
-                setSuccess("")
-            }else{
-                setErrors({})
-                setSuccess("Logged in")
-            }
-        }
     return(
         <>
         
@@ -63,9 +36,9 @@ function Login() {
             <div className="mb-4">
                 <input type="email" 
                 name="email" 
-                placeholder="Email" 
-                value={form.email}
-                onChange={handleChange} 
+                placeholder="Enter Email..." 
+                value={ email }
+                onChange={ (e) => setEmail(e.target.value) }
                 className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus;ring-blue-400"
                 />
                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -74,9 +47,9 @@ function Login() {
             <div className="mb-4">
                 <input type="password" 
                 name="password" 
-                placeholder="Password" 
-                value={form.password}
-                onChange={handleChange} 
+                placeholder="Enter Password..." 
+                value={password}
+                onChange={ (e) => setPassword(e.target.value) }
                 className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus;ring-blue-400"
                 />
                 <p className="text-red-500 text-sm mt-1">{errors.password}</p>
@@ -85,7 +58,7 @@ function Login() {
                 <button type="submit">Login</button>
                  {success && <p className="text-green-600 text-center mt-4 font-medium">{success}</p>}
             </form>
-            <button>Sign Up</button>
+            <button onClick={handleSignUp}>Sign Up</button>
             <button onClick={() => signInWithPopup(auth, new GoogleAuthProvider())}>
                 Sign in with Google
             </button>
