@@ -41,27 +41,34 @@ function Login() {
         <>
         
         <form onSubmit={handleSubmit}>
+            <div className="mb-4">
                 <input type="email" 
                 name="email" 
                 placeholder="Email" 
                 value={form.email}
                 onChange={handleChange} 
+                className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus;ring-blue-400"
                 />
-                <p className="error_message">{errors.email}</p>
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            </div>
 
+            <div className="mb-4">
                 <input type="password" 
                 name="password" 
                 placeholder="Password" 
                 value={form.password}
                 onChange={handleChange} 
+                className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus;ring-blue-400"
                 />
-                <p className="error_message">{errors.password}</p>
-               
+                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+            </div>
+
                 <button type="submit">Login</button>
-                 {success && <p className="login_success">{success}</p>}
+                 {success && <p className="text-green-600 text-center mt-4 font-medium">{success}</p>}
             </form>
         </>
         
         
     )
 }
+export default Login
