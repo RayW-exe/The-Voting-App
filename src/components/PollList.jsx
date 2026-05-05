@@ -1,8 +1,13 @@
 import PollOption from "./PollOption"
-import{ useState } from "react";
+import { useState, useEffect } from "react";
 function PollList({ polls, onVote }) {
   const totalVotes = () => polls.reduce((sum, poll) => sum + poll.votes, 0);
   const [hasVoted, setHasVoted] = useState(false);
+
+  useEffect(() => {
+    setHasVoted(false);
+  }, [polls]);
+
   const handleVote = (pollId) => {
     if (!hasVoted) {
       onVote(pollId);

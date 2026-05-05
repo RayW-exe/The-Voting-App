@@ -46,7 +46,6 @@ function App() {
               <button onClick={() => {
                 setPolls(initialData);
                 storePollOptions(initialData);
-                localStorage.removeItem("polls");
               }}
                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                 Reset
