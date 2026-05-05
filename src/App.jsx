@@ -9,6 +9,7 @@ function App() {
     { id: 2, text: "Option 2", votes: 0 },
   ];
 
+ 
   const [polls, setPolls] = useState(() => {
     const stored = localStorage.getItem("polls");
     return stored ? JSON.parse(stored) : initialData;
@@ -51,6 +52,7 @@ function App() {
                 Reset
               </button>
            </div>
+
         </div>
       </div>
     </>
