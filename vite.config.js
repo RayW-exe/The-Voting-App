@@ -10,5 +10,5 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
   ],
-  base: "/The-Voting-App"
+  base: "/The-Voting-App/"
 })

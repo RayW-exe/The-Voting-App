@@ -1,6 +1,5 @@
 import { app } from "../firebase";
 import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { initializeApp } from "firebase/app";
 import { useState } from "react";
 
 
