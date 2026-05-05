@@ -1,20 +1,31 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import PollForm from "../components/PollForm";
 import PollList from "../components/PollList";
-
+import {collection,onSnapshot,query} from "firebase/firestore"
+import { db } from "../firebase";
 function VotingPage() {
   const initialData = [
     { id: 1, text: "Option 1", votes: 0 },
     { id: 2, text: "Option 2", votes: 0 },
   ];
 
-  const [polls, setPolls] = useState(() => {
-    const stored = localStorage.getItem("polls");
-    return stored ? JSON.parse(stored) : initialData;
-  });
+  const [polls, setPolls] = useState(initialData);
 
-  function storePollOptions(newPoll) {
-    localStorage.setItem("polls", JSON.stringify(newPoll));
+  useEffect(() => {
+    const q = query(collection(db, "polls"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const pollsArray = [];
+      querySnapshot.forEach((doc) => {
+        pollsArray.push({ id: doc.id, ...doc.data() });
+      });
+      setPolls(pollsArray);
+    });
+
+    return () => unsubscribe();
+  }, []);
+    
+  function storePollOptions() {
+
   }
 
   return (
@@ -28,7 +39,7 @@ function VotingPage() {
           addOption={(text) => {
             const newPolls = [...polls, { id: Date.now(), text, votes: 0 }];
             setPolls(newPolls);
-            storePollOptions(newPolls);
+            storePollOptions();
           }}
         />
 
@@ -42,7 +53,7 @@ function VotingPage() {
             );
 
             setPolls(updatedPolls);
-            storePollOptions(updatedPolls);
+            storePollOptions();
           }}
           isOptionDisabled={() => false}
         />
@@ -50,7 +61,7 @@ function VotingPage() {
         <button
           onClick={() => {
             setPolls(initialData);
-            storePollOptions(initialData);
+            storePollOptions();
           }}
           className="bg-red-500 text-white px-4 py-2 rounded mt-4"
         >
