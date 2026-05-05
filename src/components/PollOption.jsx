@@ -22,7 +22,7 @@ function PollOption({ option , totalVotes, vote, disabled}){
        </button>
         </div>
 
-      
+       
     );
 
 }
