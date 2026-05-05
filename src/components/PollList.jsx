@@ -1,7 +1,7 @@
 import PollOption from "./PollOption"
 import{ useState } from "react";
 function PollList({ polls, onVote }) {
-  const totalVotes = polls.reduce((sum, poll) => sum + poll.votes, 0);
+  const totalVotes = () => polls.reduce((sum, poll) => sum + poll.votes, 0);
   const [hasVoted, setHasVoted] = useState(false);
   const handleVote = (pollId) => {
     if (!hasVoted) {
@@ -19,7 +19,7 @@ function PollList({ polls, onVote }) {
           disabled={hasVoted}
           option={poll}
           vote={() => handleVote(poll.id)}
-          totalVotes={totalVotes}
+          totalVotes={totalVotes()}
         />
       ))}
     </div>

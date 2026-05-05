@@ -4,14 +4,15 @@ import PollList from './components/PollList';
 
 
 function App() {
- 
- const [polls, setPolls] = useState(() => {
-  const stored = localStorage.getItem("polls");
-  return stored ? JSON.parse(stored) : [
-    {id: 1, text: "Option 1", votes: 0},
-    {id: 2, text: "Option 2", votes: 0},
+  const initialData = [
+    { id: 1, text: "Option 1", votes: 0 },
+    { id: 2, text: "Option 2", votes: 0 },
   ];
-});
+
+  const [polls, setPolls] = useState(() => {
+    const stored = localStorage.getItem("polls");
+    return stored ? JSON.parse(stored) : initialData;
+  });
 
  function storePollOptions(newPoll){
   localStorage.setItem("polls", JSON.stringify(newPoll));
@@ -43,7 +44,8 @@ function App() {
                 storePollOptions(updatedPolls);
               }} isOptionDisabled={() => false} />
               <button onClick={() => {
-                setPolls([]);
+                setPolls(initialData);
+                storePollOptions(initialData);
                 localStorage.removeItem("polls");
               }}
                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
