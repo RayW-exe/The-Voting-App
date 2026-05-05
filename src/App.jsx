@@ -2,7 +2,6 @@ import { useState } from 'react';
 import PollForm from './components/PollForm';
 import PollList from './components/PollList';
 
-
 function App() {
   const initialData = [
     { id: 1, text: "Option 1", votes: 0 },

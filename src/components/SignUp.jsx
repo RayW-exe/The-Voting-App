@@ -47,43 +47,56 @@ function SignUp(){
     }
     return(
         <>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                        <input type="text" 
+                        name="fName" 
+                        placeholder="First Name" 
+                        value={form.fName}
+                        onChange={handleChange} 
+                        className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus;ring-blue-400"
+                        />
+                        <p className="text-red-500 text-sm mt-1">{errors.fName}</p>
+                    </div>
 
-            <form onSubmit={handleSubmit}>
-                <input type="text" 
-                name="fName" 
-                placeholder="First Name" 
-                value={form.fName}
-                onChange={handleChange} 
-                />
-                <p className="error_message">{errors.fName}</p>
+                    <div className="mb-4">
+                        <input type="email" 
+                        name="email" 
+                        placeholder="Email" 
+                        value={form.email}
+                        onChange={handleChange} 
+                        className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus;ring-blue-400"
+                        />
+                        <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                    </div>
 
-                <input type="email" 
-                name="email" 
-                placeholder="Email" 
-                value={form.email}
-                onChange={handleChange} 
-                />
-                <p className="error_message">{errors.email}</p>
+                    <div className="mb-4">
+                        <input type="password" 
+                        name="password" 
+                        placeholder="Password" 
+                        value={form.password}
+                        onChange={handleChange} 
+                        className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus;ring-blue-400"
+                        />
+                        <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+                    </div>
 
-                <input type="password" 
-                name="password" 
-                placeholder="Password" 
-                value={form.password}
-                onChange={handleChange} 
-                />
-                <p className="error_message">{errors.password}</p>
-                
-                <input type="password" 
-                name="repeatPassword" 
-                placeholder="Repeat Password" 
-                value={form.repeatPassword}
-                onChange={handleChange} 
-                />
-                <p className="error_message">{errors.repeatPassword}</p>
+                    <div className="mb-4">
+                        <input type="password" 
+                        name="repeatPassword" 
+                        placeholder="Repeat Password" 
+                        value={form.repeatPassword}
+                        onChange={handleChange} 
+                        className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus;ring-blue-400"
+                        />
+                        <p className="text-red-500 text-sm mt-1">{errors.repeatPassword}</p>
+                    </div>
 
-                <button type="submit">Sign Up</button>
-                 {success && <p className="signup_success">{success}</p>}
-            </form>
+                    <button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-lg transition duration-200">Sign Up</button>
+                    
+                    {success && <p className="text-green-600 text-center mt-4 font-medium">{success}</p>}
+                </form>
         </>
     )
 }
+export default SignUp
