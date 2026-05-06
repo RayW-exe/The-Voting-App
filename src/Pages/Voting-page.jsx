@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import PollForm from "../components/PollForm";
 import PollList from "../components/PollList";
-import { collection, onSnapshot, query, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, onSnapshot, query, addDoc, serverTimestamp, deleteDoc, doc } from "firebase/firestore";
 import { db, auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 function VotingPage() {
@@ -78,6 +78,17 @@ function VotingPage() {
 
   const totalVotes = polls.reduce((sum, poll) => sum + votes.filter(v => v.pollId === poll.id).length, 0);
 
+  const resetVotes = async () => {
+    try {
+      for (const vote of votes) {
+        await deleteDoc(doc(db, "votes", vote.id));
+      }
+    } catch (error) {
+      console.error("Error resetting votes:", error);
+      alert("Error resetting votes");
+    }
+  };
+
   return (
     <div className="bg-gray-300 min-h-screen p-4 flex flex-col items-center">
 
@@ -94,6 +105,15 @@ function VotingPage() {
           onVote={handleVote}
           totalVotes={totalVotes}
         />
+
+        <div className="mt-6 flex gap-4">
+          <button
+            onClick={resetVotes}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition"
+          >
+            Reset
+          </button>
+        </div>
 
       </div>
     </div>
