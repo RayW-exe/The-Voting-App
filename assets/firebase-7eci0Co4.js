@@ -1,0 +1,1 @@
+import{u as e}from"./@firebase-CbDsqlMk.js";e(`firebase`,`12.12.1`,`app`);
