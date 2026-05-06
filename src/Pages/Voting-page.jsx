@@ -32,9 +32,9 @@ function VotingPage() {
   return (
     <div className="bg-gray-300 min-h-screen p-4 flex flex-col items-center">
 
-      <div className="max-w-4xl bg-white p-6 rounded-lg shadow-lg md:w-3/4">
+      <div className="max-w-4xl bg-gray-50 mt-8 p-6 rounded-lg shadow-lg md:w-3/4">
 
-        <h1 className="text-3xl font-bold mb-4">The Voting App</h1>
+        <h1 className="text-3xl text-center font-bold mb-9">The Voting App</h1>
 
         <PollForm
           addOption={(text) => {
