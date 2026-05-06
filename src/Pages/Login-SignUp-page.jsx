@@ -13,13 +13,13 @@ function LoginSignUpPage() {
 
     const auth = getAuth(app);
     
-    const handleSignUp = async (e) => {
+    const handleSignUp = async () => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             console.log("SignUp Done");
             navigate("/voting")
         } catch (error) {
-            console.log(error)
+            setLoginError(error.message);
         }
     }
 
@@ -61,7 +61,7 @@ function LoginSignUpPage() {
                             placeholder="Enter Email..." 
                             value={ email }
                             onChange={ (e) => setEmail(e.target.value) }
-                            className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus;ring-blue-400"
+                            className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                             />
                             <p className="text-red-500 text-sm mt-1">{loginError}</p>
                         </div>
@@ -72,7 +72,7 @@ function LoginSignUpPage() {
                             placeholder="Enter Password..." 
                             value={password}
                             onChange={ (e) => setPassword(e.target.value) }
-                            className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus;ring-blue-400"
+                            className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                             />
                             <p className="text-red-500 text-sm mt-1">{loginError}</p>
                         </div>

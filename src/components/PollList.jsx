@@ -1,8 +1,15 @@
 import PollOption from "./PollOption"
-import { useState } from "react";
-function PollList({ polls, onVote }) {
+import { useState, useEffect } from "react";
+function PollList({ polls, onVote, resetVotingState }) {
   const totalVotes = () => polls.reduce((sum, poll) => sum + poll.votes, 0);
   const [hasVoted, setHasVoted] = useState(false);
+
+  // Reset voting state when the parent triggers a reset
+  useEffect(() => {
+    if (resetVotingState) {
+      setHasVoted(false);
+    }
+  }, [resetVotingState]);
 
   const handleVote = (pollId) => {
     if (!hasVoted) {
