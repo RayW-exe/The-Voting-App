@@ -1,1 +1,0 @@
-import{d as e}from"./@firebase-DqFyMohB.js";e(`firebase`,`12.12.1`,`app`);
