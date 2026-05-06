@@ -80,6 +80,7 @@ function LoginSignUpPage() {
                             <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-200">Login</button>
                     </form>
                     <div className="items-center justify-center">
+                        <h2 className="text-center">Don't have an Account?</h2>
                         <button onClick={handleSignUp} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-200">Sign Up</button><br />
                         <button onClick={ handleLoginWithGoogle} className="w-full flex items-center justify-center gap-2 border border-gray-300 hover:bg-gray-50 py-2 rounded-lg transition">
                             <img src="https://www.svgrepo.com/show/355037/google.svg" className="w-5 h-5" alt="Google" />
