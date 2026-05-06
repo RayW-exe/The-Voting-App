@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { app } from "../firebase";
 import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { initializeApp } from "firebase/app";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
