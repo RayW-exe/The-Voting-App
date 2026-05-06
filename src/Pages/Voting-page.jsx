@@ -10,6 +10,7 @@ function VotingPage() {
   ];
 
   const [polls, setPolls] = useState(initialData);
+  const [resetVotingState, setResetVotingState] = useState(false);
 
   useEffect(() => {
     const q = query(collection(db, "polls"));
@@ -55,12 +56,15 @@ function VotingPage() {
             setPolls(updatedPolls);
             storePollOptions();
           }}
+          resetVotingState={resetVotingState}
           isOptionDisabled={() => false}
         />
 
         <button
           onClick={() => {
             setPolls(initialData);
+            setResetVotingState(true);
+            setTimeout(() => setResetVotingState(false), 1000);
             storePollOptions();
           }}
           className="bg-red-500 text-white px-4 py-2 rounded mt-4"
